@@ -5,12 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LoanApp.Domain\LoanApp.Domain.csproj" />
-    <ProjectReference Include="..\LoanApp.Persistance\LoanApp.Persistance.csproj" />
+    <Compile Remove="Loans\**" />
+    <EmbeddedResource Remove="Loans\**" />
+    <None Remove="Loans\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Loans\Commands\CreateLoan\" />
+    <ProjectReference Include="..\LoanApp.Domain\LoanApp.Domain.csproj" />
+    <ProjectReference Include="..\LoanApp.Persistance\LoanApp.Persistance.csproj" />
   </ItemGroup>
 
   <ItemGroup>

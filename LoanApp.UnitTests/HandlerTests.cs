@@ -1,6 +1,6 @@
 ﻿using LoanApp.Application.Users.Commands.CreateUser;
 using LoanApp.Domain.Entities;
-using LoanApp.Persistance;
+using LoanApp.Persistence;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

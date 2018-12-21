@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AssemblyName>LoanApp.Persistence</AssemblyName>
+    <RootNamespace>LoanApp.Persistence</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,10 +1,7 @@
 ﻿using LoanApp.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace LoanApp.Persistance
+namespace LoanApp.Persistence
 {
     public class LoanAppDbContext : DbContext
     {
@@ -12,6 +9,14 @@ namespace LoanApp.Persistance
             : base(options)
         {
         }
+
         public DbSet<User> Users { get; set; }
+        public DbSet<Loan> Loans { get; set; }
+        public DbSet<LoanType> LoanTypes { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(LoanAppDbContext).Assembly);
+        }
     }
 }

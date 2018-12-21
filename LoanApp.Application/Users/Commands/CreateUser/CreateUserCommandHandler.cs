@@ -1,5 +1,5 @@
 ﻿using LoanApp.Domain.Entities;
-using LoanApp.Persistance;
+using LoanApp.Persistence;
 using MediatR;
 using System;
 using System.Collections.Generic;
