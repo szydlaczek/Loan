@@ -1,9 +1,6 @@
 ﻿using LoanApp.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace LoanApp.Persistence.Configurations
 {
@@ -11,7 +8,8 @@ namespace LoanApp.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.HasKey(u => u.Id);           
+            builder.HasKey(u => u.Id);
+            
 
         }
     }

@@ -1,9 +1,6 @@
 ﻿using LoanApp.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace LoanApp.Persistence.Configurations
 {
@@ -21,6 +18,7 @@ namespace LoanApp.Persistence.Configurations
                 .WithMany(d => d.SomeOneLoans)
                 .HasForeignKey(d => d.LenderId)
                 .OnDelete(DeleteBehavior.Restrict);
+
             builder.HasOne(b => b.Borrower)
                 .WithMany(l => l.MyLoans)
                 .HasForeignKey(l => l.BorrowerId)

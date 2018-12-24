@@ -17,7 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\LoanApp.Application\LoanApp.Application.csproj" />
     <ProjectReference Include="..\LoanApp.Domain\LoanApp.Domain.csproj" />
-    <ProjectReference Include="..\LoanApp.Persistance\LoanApp.Persistance.csproj" />
+    <ProjectReference Include="..\LoanApp.Persistance\LoanApp.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

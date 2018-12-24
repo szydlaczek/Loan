@@ -12,10 +12,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LoanApp.Domain\LoanApp.Domain.csproj" />
-    <ProjectReference Include="..\LoanApp.Persistance\LoanApp.Persistance.csproj" />
+    <ProjectReference Include="..\LoanApp.Persistance\LoanApp.Persistence.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="8.1.2" />
     <PackageReference Include="MediatR" Version="6.0.0" />
   </ItemGroup>
 

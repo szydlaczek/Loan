@@ -11,17 +11,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{BE1CB6A4-79D7-4A3C-8B1A-945EA74CBE2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoanApp.Application", "LoanApp.Application\LoanApp.Application.csproj", "{42DF2731-445E-4C92-9661-ADA41C05B39E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoanApp.Application", "LoanApp.Application\LoanApp.Application.csproj", "{42DF2731-445E-4C92-9661-ADA41C05B39E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoanApp.Domain", "LoanApp.Domain\LoanApp.Domain.csproj", "{418F3E1C-955E-447A-A07B-6D97CC96373E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoanApp.Domain", "LoanApp.Domain\LoanApp.Domain.csproj", "{418F3E1C-955E-447A-A07B-6D97CC96373E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoanApp.Persistance", "LoanApp.Persistance\LoanApp.Persistance.csproj", "{87635AEB-488A-4679-BE81-2A82B0A2AF51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoanApp.Persistence", "LoanApp.Persistance\LoanApp.Persistence.csproj", "{87635AEB-488A-4679-BE81-2A82B0A2AF51}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoanApp.Api", "LoanApp.Api\LoanApp.Api.csproj", "{6289E275-5652-4D0D-9621-0C2E399C7A3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoanApp.Api", "LoanApp.Api\LoanApp.Api.csproj", "{6289E275-5652-4D0D-9621-0C2E399C7A3E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{FB34A7CB-A959-49F3-82F3-91A6B0E22EF2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoanApp.UnitTests", "LoanApp.UnitTests\LoanApp.UnitTests.csproj", "{318A5748-3443-47DE-AA40-01E417D712C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoanApp.UnitTests", "LoanApp.UnitTests\LoanApp.UnitTests.csproj", "{318A5748-3443-47DE-AA40-01E417D712C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

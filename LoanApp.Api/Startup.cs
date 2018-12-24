@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using FluentValidation.AspNetCore;
+using LoanApp.Api.Filters;
+using LoanApp.Application.Infrastructure;
 using LoanApp.Application.Users.Commands.CreateUser;
 using LoanApp.Persistence;
 using MediatR;
@@ -31,9 +34,16 @@ namespace LoanApp.Api
         {
             services.AddDbContext<LoanAppDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("LoanDatabase")));
-            
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
+
             services.AddMediatR(typeof(CreateUserCommandHandler).GetTypeInfo().Assembly);
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc(options=>options.Filters.Add(typeof(CustomExceptionFilterAttribute)))
+            .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CreateUserCommandValidator>());
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
