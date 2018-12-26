@@ -14,5 +14,6 @@ namespace LoanApp.Domain.Entities
         public int LenderId { get; set; }
         public User Lender { get; set; }
         public User Borrower { get; set; }
+        public bool IsPaid { get; set; }
     }
 }
