@@ -1,8 +1,9 @@
-﻿using MediatR;
+﻿using LoanApp.Application.Infrastructure;
+using MediatR;
 
 namespace LoanApp.Application.Users.Commands.CreateUser
 {
-    public class CreateUserCommand : IRequest
+    public class CreateUserCommand : IRequest<Response>
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

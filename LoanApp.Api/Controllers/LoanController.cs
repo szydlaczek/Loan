@@ -21,7 +21,9 @@ namespace LoanApp.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(AddLoanCommand command)
         {
-            await _mediator.Send(command);
+            var result= await _mediator.Send(command);
+            if (result.Errors.Any())
+                return BadRequest(result);
             return Created("", null);
         }
     }

@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using FluentValidation.Results;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 namespace LoanApp.Application.Infrastructure
 {
     public class RequestValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
-       where TRequest : IRequest<TResponse>
+       where TRequest : IRequest<TResponse> where TResponse : Response
     {
         private readonly IEnumerable<IValidator<TRequest>> _validators;
 
@@ -29,12 +30,26 @@ namespace LoanApp.Application.Infrastructure
                 .Where(f => f != null)
                 .ToList();
 
-            if (failures.Count != 0)
+            //if (failures.Count != 0)
+            //{
+            //    throw new Exceptions.ValidationException(failures);
+            //}
+
+            //return next();
+            return failures.Any()
+                ? Errors(failures)
+                : next();
+        }
+        private static Task<TResponse> Errors(IEnumerable<ValidationFailure> failures)
+        {
+            var response = new Response();
+
+            foreach (var failure in failures)
             {
-                throw new Exceptions.ValidationException(failures);
+                response.AddError(failure.PropertyName + " " + failure.ErrorMessage.ToLower());
             }
 
-            return next();
+            return Task.FromResult(response as TResponse);
         }
     }
 }

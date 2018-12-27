@@ -1,4 +1,5 @@
-﻿using LoanApp.Domain.Entities;
+﻿using LoanApp.Application.Infrastructure;
+using LoanApp.Domain.Entities;
 using LoanApp.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace LoanApp.Application.Users.Commands.CreateUser
 {
-    public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand>
+    public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, Response>
     {
         private readonly LoanAppDbContext _context;
 
@@ -18,12 +19,12 @@ namespace LoanApp.Application.Users.Commands.CreateUser
             _context = context;
         }
 
-        public async Task<Unit> Handle(CreateUserCommand request, CancellationToken cancellationToken)
+        public async Task<Response> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
             User user = await _context.Users.Where(d => string.Equals(d.EmailAddress, request.EmailAddress, StringComparison.OrdinalIgnoreCase))
                 .FirstOrDefaultAsync();
             if (user != null)
-                throw new ArgumentException($"Email {request.EmailAddress} already exists, choose another", nameof(CreateUserCommand));
+                return new Response().AddError($"Email {request.EmailAddress} already exists");
             user = new User();
             user.EmailAddress = request.EmailAddress;
             user.FirstName = request.FirstName;
@@ -32,7 +33,9 @@ namespace LoanApp.Application.Users.Commands.CreateUser
             user.LastName = request.LastName;
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
-            return Unit.Value;
+            
+            
+            return new Response();
         }
     }
 }

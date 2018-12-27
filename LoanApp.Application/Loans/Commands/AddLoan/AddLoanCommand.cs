@@ -1,8 +1,9 @@
-﻿using MediatR;
+﻿using LoanApp.Application.Infrastructure;
+using MediatR;
 
 namespace LoanApp.Application.Loans.Commands.AddLoan
 {
-    public class AddLoanCommand : IRequest
+    public class AddLoanCommand : IRequest<Response>
     {
         public int LenderId { get; set; }
         public int BorrowerId { get; set; }
