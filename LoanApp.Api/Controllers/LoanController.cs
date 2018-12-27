@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LoanApp.Application.Loans.Commands.AddLoan;
+using LoanApp.Application.Loans.Commands.PayLoan;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -25,6 +26,17 @@ namespace LoanApp.Api.Controllers
             if (result.Errors.Any())
                 return BadRequest(result);
             return Created("", null);
+        }
+
+        [HttpPut]
+        [Route("PayLoan/{id}")]
+        public async Task<IActionResult> Put(int id)
+        {
+            var result = await _mediator.Send(new PayLoanCommand { LoanId = id });
+            if (result.Errors.Any())
+                return BadRequest(result);
+            else
+                return Ok();
         }
     }
 }
