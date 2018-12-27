@@ -35,8 +35,8 @@ namespace LoanApp.UnitTests
 
             using (var context = new LoanAppDbContext(options))
             {
-                context.Users.Add(new User { EmailAddress="aa", FirstName="grzegorz", Id=1, IsBorrower=true, IsLender=false, LastName="szyd" });
-                context.Users.Add(new User { EmailAddress = "aa1", FirstName = "grzegorz", Id = 2, IsBorrower = false, IsLender = true, LastName = "szyd" });
+                context.Users.Add(new User { EmailAddress="sz", FirstName="grzegorz",  IsBorrower=true, IsLender=false, LastName="szyd" });
+                context.Users.Add(new User { EmailAddress = "aa1", FirstName = "grzegorz",  IsBorrower = false, IsLender = true, LastName = "szyd" });
                 await context.SaveChangesAsync();
             }
 

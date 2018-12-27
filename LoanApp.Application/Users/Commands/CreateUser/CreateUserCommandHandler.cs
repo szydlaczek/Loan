@@ -24,12 +24,13 @@ namespace LoanApp.Application.Users.Commands.CreateUser
                 .FirstOrDefaultAsync();
             if (user != null)
                 throw new ArgumentException($"Email {request.EmailAddress} already exists, choose another", nameof(CreateUserCommand));
+            user = new User();
             user.EmailAddress = request.EmailAddress;
             user.FirstName = request.FirstName;
             user.IsBorrower = request.IsBorrower;
             user.IsLender = request.IsLender;
             user.LastName = request.LastName;
-            await _context.Users.AddAsync(user);
+            _context.Users.Add(user);
             await _context.SaveChangesAsync();
             return Unit.Value;
         }
