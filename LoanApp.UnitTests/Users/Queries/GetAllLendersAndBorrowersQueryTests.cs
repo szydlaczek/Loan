@@ -9,13 +9,14 @@ using Xunit;
 
 namespace LoanApp.UnitTests.Users.Queries
 {
-    public class GetAllLendersAndBorrowersQueryTests : TestBase, IDisposable
+    [Collection("QueryCollection")]
+    public class GetAllLendersAndBorrowersQueryTests
     {
         private readonly LoanAppDbContext _context;
         private readonly GetAllLendersAndBorrowersQueryHandler _queryHandler;
-        public GetAllLendersAndBorrowersQueryTests()
+        public GetAllLendersAndBorrowersQueryTests(TestFixture fixture)
         {
-            _context = InitAndGetDbContext();
+            _context = fixture.Context;
             _queryHandler = new GetAllLendersAndBorrowersQueryHandler(_context);
         }
         [Fact]

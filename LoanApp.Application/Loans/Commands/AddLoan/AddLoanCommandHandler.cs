@@ -30,11 +30,11 @@ namespace LoanApp.Application.Loans.Commands.AddLoan
             if (loanType == null)
                 return new Response().AddError("Loan type doesnt exists");
                 
-            var lender = await _context.Users.Where(l => l.Id == request.LenderId).FirstOrDefaultAsync();
+            var lender = await _context.Users.Where(l => l.Id == request.LenderId && l.IsLender).FirstOrDefaultAsync();
             if (lender == null)
                 return new Response().AddError($"User with Id {request.LenderId} doesnt exist");
 
-            var borrower = await _context.Users.Where(b => b.Id == request.BorrowerId).FirstOrDefaultAsync();
+            var borrower = await _context.Users.Where(b => b.Id == request.BorrowerId && b.IsBorrower).FirstOrDefaultAsync();
             if (borrower == null)
                 return new Response().AddError($"User with Id {request.BorrowerId} doesnt exist");
 

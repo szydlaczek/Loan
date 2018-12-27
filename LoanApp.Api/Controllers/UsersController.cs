@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
-using LoanApp.Application.Infrastructure;
-using LoanApp.Application.Users.Commands.CreateUser;
+﻿using LoanApp.Application.Users.Commands.CreateUser;
+using LoanApp.Application.Users.Queries;
+using LoanApp.Application.Users.Queries.GetUserBorrows;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace LoanApp.Api.Controllers
 {
@@ -19,7 +17,7 @@ namespace LoanApp.Api.Controllers
         {
             _mediator = mediator;
         }
-        // GET api/values
+        
         [HttpPost]
         public async Task<IActionResult> Post(CreateUserCommand command)
         {
@@ -30,6 +28,19 @@ namespace LoanApp.Api.Controllers
                 return Created("", null);
             
         }
-        
+        [HttpGet]
+        [Route("{id}/loans")]
+        public async Task<IActionResult> Get(int id)
+        {
+            var response =await  _mediator.Send(new GetUserBorrowsQuery { UserId = id });
+            return Ok(response.Result);
+        }
+        [HttpGet]
+        [Route("All")]
+        public async Task<IActionResult> GetAll()
+        {
+            var result = await _mediator.Send(new GetAllLendersAndBorrowersQuery());
+            return Ok(result);
+        }       
     }
 }

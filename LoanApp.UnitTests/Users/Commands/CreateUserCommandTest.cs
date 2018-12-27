@@ -10,14 +10,15 @@ using Xunit;
 
 namespace LoanApp.UnitTests.Users.Commands
 {
-    public class CreateUserCommandTest : TestBase, IDisposable
+    [Collection("QueryCollection")]
+    public class CreateUserCommandTest
     {
         private readonly LoanAppDbContext _context;
         private readonly CreateUserCommandHandler _commandHandler;
 
-        public CreateUserCommandTest()
+        public CreateUserCommandTest(TestFixture fixture)
         {
-            _context = InitAndGetDbContext();
+            _context = fixture.Context;
             _commandHandler = new CreateUserCommandHandler(_context);
         }
 
@@ -47,11 +48,5 @@ namespace LoanApp.UnitTests.Users.Commands
             Assert.Single(result.Errors);
         }
 
-        
-
-        public void Dispose()
-        {
-            _context.Dispose();
-        }
     }
 }

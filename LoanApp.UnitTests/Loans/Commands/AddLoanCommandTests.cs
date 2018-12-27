@@ -11,14 +11,15 @@ using Xunit;
 
 namespace LoanApp.UnitTests.Loans.Commands
 {
-    public class AddLoanCommandTests : TestBase, IDisposable
+    [Collection("QueryCollection")]
+    public class AddLoanCommandTests  /*TestBase, IDisposable*/
     {
         private readonly LoanAppDbContext _context;
         private readonly AddLoanCommandHandler _commandHandler;
 
-        public AddLoanCommandTests()
+        public AddLoanCommandTests(TestFixture fixture)
         {
-            _context = InitAndGetDbContext();
+            _context = fixture.Context;
             _commandHandler = new AddLoanCommandHandler(_context);
         }
 
@@ -55,11 +56,7 @@ namespace LoanApp.UnitTests.Loans.Commands
             command.LoanValue = 100;
             result = await _commandHandler.Handle(command, CancellationToken.None);
             Assert.Empty(result.Errors);
-        }       
-
-        public void Dispose()
-        {
-            _context.Dispose();
-        }
+        }   
+       
     }
 }

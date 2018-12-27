@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace LoanApp.Application.Infrastructure
 {
     public class RequestValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
-       where TRequest : IRequest<TResponse> where TResponse : Response
+       where TRequest : IRequest<TResponse> where TResponse : class
     {
         private readonly IEnumerable<IValidator<TRequest>> _validators;
 
