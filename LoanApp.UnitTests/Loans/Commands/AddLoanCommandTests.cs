@@ -36,11 +36,11 @@ namespace LoanApp.UnitTests.Loans.Commands
             result = await _commandHandler.Handle(command, CancellationToken.None);
             Assert.Equal("Loan type doesnt exists", result.Errors.FirstOrDefault());
             command.LoanTypeId = 1;
-            command.LenderId = 3;
+            command.LenderId = 4;
             result = await _commandHandler.Handle(command, CancellationToken.None);
             Assert.Equal($"User with Id {command.LenderId} doesnt exist", result.Errors.FirstOrDefault());
             command.LenderId = 2;
-            command.BorrowerId = 3;
+            command.BorrowerId = 4;
             Assert.Equal($"User with Id {command.BorrowerId} doesnt exist", result.Errors.FirstOrDefault());
         }
 
@@ -55,47 +55,7 @@ namespace LoanApp.UnitTests.Loans.Commands
             command.LoanValue = 100;
             result = await _commandHandler.Handle(command, CancellationToken.None);
             Assert.Empty(result.Errors);
-        }
-
-        private LoanAppDbContext InitAndGetDbContext()
-        {
-            var builder = new DbContextOptionsBuilder<LoanAppDbContext>();
-            builder.UseInMemoryDatabase("Test");
-            builder.EnableSensitiveDataLogging();
-
-            var context = new LoanAppDbContext(builder.Options);
-            if (context.Database.EnsureCreated())
-            {
-                var user1 = new User
-                {
-                    EmailAddress = "Kathy.Matthews@gmail.com",
-                    FirstName = "Kathy",
-                    LastName = "Matthews",
-                    IsBorrower = true,
-                    IsLender = false
-                };
-
-                var user2 = new User
-                {
-                    EmailAddress = "Pablo.Jorreto@gmail.com",
-                    FirstName = "Pablo",
-                    LastName = "Jorreto",
-                    IsBorrower = true,
-                    IsLender = false
-                };
-
-                var loanType = new LoanType
-                {
-                    Name = "Shopping"
-                };
-                context.LoanTypes.Add(loanType);
-                context.Users.Add(user1);
-                context.Users.Add(user2);
-                context.SaveChanges();
-            }
-
-            return context;
-        }
+        }       
 
         public void Dispose()
         {

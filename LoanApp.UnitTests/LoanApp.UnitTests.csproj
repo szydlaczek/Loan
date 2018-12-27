@@ -20,8 +20,4 @@
     <ProjectReference Include="..\LoanApp.Persistance\LoanApp.Persistence.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Users\Queries\" />
-  </ItemGroup>
-
 </Project>
