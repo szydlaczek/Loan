@@ -13,34 +13,36 @@ namespace LoanApp.Api.Controllers
     public class UsersController : ControllerBase
     {
         private readonly IMediator _mediator;
+
         public UsersController(IMediator mediator)
         {
             _mediator = mediator;
         }
-        
+
         [HttpPost]
         public async Task<IActionResult> Post(CreateUserCommand command)
         {
-            var result=await _mediator.Send(command);
+            var result = await _mediator.Send(command);
             if (result.Errors.Any())
                 return BadRequest(result);
             else
                 return Created("", null);
-            
         }
+
         [HttpGet]
         [Route("{id}/loans")]
         public async Task<IActionResult> GetUserLoans(int id)
         {
-            var response =await  _mediator.Send(new GetUserBorrowsQuery { UserId = id });
+            var response = await _mediator.Send(new GetUserBorrowsQuery { UserId = id });
             return Ok(response);
         }
+
         [HttpGet]
         [Route("All")]
         public async Task<IActionResult> GetAll()
         {
             var result = await _mediator.Send(new GetAllLendersAndBorrowersQuery());
             return Ok(result);
-        }       
+        }
     }
 }

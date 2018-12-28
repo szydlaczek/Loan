@@ -1,9 +1,6 @@
 ﻿using LoanApp.Application.Loans.Commands.PayLoan;
 using LoanApp.Persistence;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -11,10 +8,11 @@ using Xunit;
 namespace LoanApp.UnitTests.Loans.Commands
 {
     [Collection("QueryCollection")]
-    public class PayLoanCommandTests 
+    public class PayLoanCommandTests
     {
         private readonly LoanAppDbContext _context;
         private readonly PayLoanCommandHandler _commandHandler;
+
         public PayLoanCommandTests(TestFixture fixture)
         {
             _context = fixture.Context;
@@ -47,7 +45,5 @@ namespace LoanApp.UnitTests.Loans.Commands
             var result = await _commandHandler.Handle(command, CancellationToken.None);
             Assert.Equal($"Loan with Id {command.LoanId} has been already paid", result.Errors.FirstOrDefault());
         }
-
-        
     }
 }

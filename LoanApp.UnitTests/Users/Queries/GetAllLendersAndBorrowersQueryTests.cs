@@ -1,8 +1,5 @@
 ﻿using LoanApp.Application.Users.Queries;
 using LoanApp.Persistence;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -14,11 +11,13 @@ namespace LoanApp.UnitTests.Users.Queries
     {
         private readonly LoanAppDbContext _context;
         private readonly GetAllLendersAndBorrowersQueryHandler _queryHandler;
+
         public GetAllLendersAndBorrowersQueryTests(TestFixture fixture)
         {
             _context = fixture.Context;
             _queryHandler = new GetAllLendersAndBorrowersQueryHandler(_context);
         }
+
         [Fact]
         public async Task GetAllUsersShouldReturnOneLenderAndOneBorrower()
         {
@@ -27,6 +26,5 @@ namespace LoanApp.UnitTests.Users.Queries
             Assert.Equal(1, result.Lenders.Count);
             Assert.Equal(1, result.Borrowers.Count);
         }
-        
     }
 }

@@ -2,10 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 
 namespace LoanApp.Api.Filters
 {
@@ -14,7 +11,7 @@ namespace LoanApp.Api.Filters
     {
         public override void OnException(ExceptionContext context)
         {
-            if(context.Exception is ValidationException)
+            if (context.Exception is ValidationException)
             {
                 context.HttpContext.Response.ContentType = "application/json";
                 context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
@@ -30,7 +27,7 @@ namespace LoanApp.Api.Filters
             {
                 code = HttpStatusCode.NotFound;
             }
-            
+
             context.HttpContext.Response.ContentType = "application/json";
             context.HttpContext.Response.StatusCode = (int)code;
             context.Result = new JsonResult(new

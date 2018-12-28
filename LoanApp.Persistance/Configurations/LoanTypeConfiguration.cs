@@ -12,7 +12,7 @@ namespace LoanApp.Persistence.Configurations
             builder.HasIndex(l => l.Name)
                 .IsUnique();
 
-            builder.HasData(new LoanType() { Id=1, Name = "Dinner" });
+            builder.HasData(new LoanType() { Id = 1, Name = "Dinner" });
         }
     }
 }

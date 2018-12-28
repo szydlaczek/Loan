@@ -1,8 +1,6 @@
 ﻿using LoanApp.Domain.Entities;
 using System;
-using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace LoanApp.Application.Users.Models
 {
@@ -19,10 +17,10 @@ namespace LoanApp.Application.Users.Models
             {
                 return p => new UserBorrowsPreviewDto
                 {
-                    Id=p.Id,
-                    Type=p.LoanType.Name,
-                    Value=p.LoanValue,
-                    FromUser=$"{p.Lender.FirstName} {p.Lender.LastName} "
+                    Id = p.Id,
+                    Type = p.LoanType.Name,
+                    Value = p.LoanValue,
+                    FromUser = $"{p.Lender.FirstName} {p.Lender.LastName} "
                 };
             }
         }

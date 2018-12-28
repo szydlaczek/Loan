@@ -1,10 +1,8 @@
-﻿using LoanApp.Application.Exceptions;
-using LoanApp.Application.Infrastructure;
+﻿using LoanApp.Application.Infrastructure;
 using LoanApp.Domain.Entities;
 using LoanApp.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -29,7 +27,7 @@ namespace LoanApp.Application.Loans.Commands.AddLoan
 
             if (loanType == null)
                 return new Response().AddError("Loan type doesnt exists");
-                
+
             var lender = await _context.Users.Where(l => l.Id == request.LenderId && l.IsLender).FirstOrDefaultAsync();
             if (lender == null)
                 return new Response().AddError($"User with Id {request.LenderId} doesnt exist");

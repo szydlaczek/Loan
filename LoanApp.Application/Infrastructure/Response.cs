@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 
 namespace LoanApp.Application.Infrastructure
 {
     public class Response
     {
-        readonly IList<string> _messages = new List<string>();
+        private readonly IList<string> _messages = new List<string>();
 
         public IEnumerable<string> Errors { get; }
         public object Result { get; }

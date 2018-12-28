@@ -6,7 +6,8 @@ namespace LoanApp.UnitTests
 {
     public class TestFixture : IDisposable
     {
-       public LoanAppDbContext Context { get; private set; }
+        public LoanAppDbContext Context { get; private set; }
+
         public TestFixture()
         {
             Context = ContextFactory.Create();
@@ -17,6 +18,7 @@ namespace LoanApp.UnitTests
             ContextFactory.Destroy(Context);
         }
     }
+
     [CollectionDefinition("QueryCollection")]
     public class QueryCollection : ICollectionFixture<TestFixture> { }
 }

@@ -1,8 +1,5 @@
 ﻿using LoanApp.Application.Users.Commands.CreateUser;
-using LoanApp.Domain.Entities;
 using LoanApp.Persistence;
-using Microsoft.EntityFrameworkCore;
-using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -47,6 +44,5 @@ namespace LoanApp.UnitTests.Users.Commands
             var result = await _commandHandler.Handle(createUserCommand, CancellationToken.None);
             Assert.Single(result.Errors);
         }
-
     }
 }

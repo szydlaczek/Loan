@@ -18,12 +18,11 @@ namespace LoanApp.Application.Users.Commands.CreateUser
                 .NotEmpty()
                 .WithMessage("cannot be empty");
 
-            RuleFor(x=>x.LastName)
+            RuleFor(x => x.LastName)
                 .MaximumLength(60)
                 .WithMessage("max length is 60")
                 .NotEmpty()
                 .WithMessage("cannot be empty");
-           
         }
     }
 }

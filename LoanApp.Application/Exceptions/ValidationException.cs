@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace LoanApp.Application.Exceptions
 {
@@ -13,6 +12,7 @@ namespace LoanApp.Application.Exceptions
         {
             Failures = new Dictionary<string, string[]>();
         }
+
         public ValidationException(List<ValidationFailure> failures)
             : this()
         {
@@ -30,6 +30,7 @@ namespace LoanApp.Application.Exceptions
                 Failures.Add(propertyName, propertyFailures);
             }
         }
+
         public IDictionary<string, string[]> Failures { get; }
     }
 }

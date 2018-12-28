@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace LoanApp.Domain.Entities
 {
@@ -10,6 +8,7 @@ namespace LoanApp.Domain.Entities
         {
             Loans = new HashSet<Loan>();
         }
+
         public int Id { get; set; }
         public string Name { get; set; }
 

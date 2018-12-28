@@ -1,10 +1,8 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
 using MediatR;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -40,6 +38,7 @@ namespace LoanApp.Application.Infrastructure
                 ? Errors(failures)
                 : next();
         }
+
         private static Task<TResponse> Errors(IEnumerable<ValidationFailure> failures)
         {
             var response = new Response();

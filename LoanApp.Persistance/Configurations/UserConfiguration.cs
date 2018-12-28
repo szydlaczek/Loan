@@ -11,8 +11,6 @@ namespace LoanApp.Persistence.Configurations
             builder.HasKey(u => u.Id);
             builder.HasIndex(u => u.EmailAddress)
                 .IsUnique();
-            
-
         }
     }
 }

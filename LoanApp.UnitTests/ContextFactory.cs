@@ -1,9 +1,6 @@
 ﻿using LoanApp.Domain.Entities;
 using LoanApp.Persistence;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace LoanApp.UnitTests
 {
@@ -35,10 +32,7 @@ namespace LoanApp.UnitTests
                 IsLender = true
             };
 
-            //var loanType = new LoanType
-            //{
-            //    Name = "Shopping"
-            //};
+            
 
             var loan1 = new Loan
             {
@@ -64,6 +58,7 @@ namespace LoanApp.UnitTests
             context.SaveChanges();
             return context;
         }
+
         public static void Destroy(LoanAppDbContext context)
         {
             //context.Database.EnsureDeleted();

@@ -33,8 +33,7 @@ namespace LoanApp.Application.Users.Commands.CreateUser
             user.LastName = request.LastName;
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
-            
-            
+
             return new Response();
         }
     }

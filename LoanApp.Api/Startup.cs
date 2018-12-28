@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
-using FluentValidation.AspNetCore;
+﻿using FluentValidation.AspNetCore;
 using LoanApp.Api.Filters;
 using LoanApp.Application.Infrastructure;
 using LoanApp.Application.Users.Commands.CreateUser;
@@ -15,8 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using System.Reflection;
 
 namespace LoanApp.Api
 {
@@ -37,7 +31,7 @@ namespace LoanApp.Api
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
 
             services.AddMediatR(typeof(CreateUserCommandHandler).GetTypeInfo().Assembly);
-            services.AddMvc(options=>options.Filters.Add(typeof(CustomExceptionFilterAttribute)))
+            services.AddMvc(options => options.Filters.Add(typeof(CustomExceptionFilterAttribute)))
             .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CreateUserCommandValidator>());
             services.Configure<ApiBehaviorOptions>(options =>

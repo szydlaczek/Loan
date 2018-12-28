@@ -1,9 +1,6 @@
 ﻿using LoanApp.Application.Infrastructure;
 using LoanApp.Application.Loans.Commands.AddLoan;
-using LoanApp.Domain.Entities;
 using LoanApp.Persistence;
-using Microsoft.EntityFrameworkCore;
-using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -56,7 +53,6 @@ namespace LoanApp.UnitTests.Loans.Commands
             command.LoanValue = 100;
             result = await _commandHandler.Handle(command, CancellationToken.None);
             Assert.Empty(result.Errors);
-        }   
-       
+        }
     }
 }
