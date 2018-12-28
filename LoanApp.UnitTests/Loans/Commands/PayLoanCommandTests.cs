@@ -48,9 +48,6 @@ namespace LoanApp.UnitTests.Loans.Commands
             Assert.Equal($"Loan with Id {command.LoanId} has been already paid", result.Errors.FirstOrDefault());
         }
 
-        public void Dispose()
-        {
-            _context.Dispose();
-        }
+        
     }
 }

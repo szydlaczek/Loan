@@ -55,7 +55,18 @@ namespace LoanApp.Persistence.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Name")
+                        .IsUnique()
+                        .HasFilter("[Name] IS NOT NULL");
+
                     b.ToTable("LoanTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Dinner"
+                        });
                 });
 
             modelBuilder.Entity("LoanApp.Domain.Entities.User", b =>

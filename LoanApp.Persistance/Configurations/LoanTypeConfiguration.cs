@@ -9,6 +9,10 @@ namespace LoanApp.Persistence.Configurations
         public void Configure(EntityTypeBuilder<LoanType> builder)
         {
             builder.HasKey(l => l.Id);
+            builder.HasIndex(l => l.Name)
+                .IsUnique();
+
+            builder.HasData(new LoanType() { Id=1, Name = "Dinner" });
         }
     }
 }

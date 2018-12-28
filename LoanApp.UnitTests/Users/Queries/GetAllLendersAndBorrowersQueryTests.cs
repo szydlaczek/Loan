@@ -24,12 +24,9 @@ namespace LoanApp.UnitTests.Users.Queries
         {
             var query = new GetAllLendersAndBorrowersQuery();
             var result = await _queryHandler.Handle(query, CancellationToken.None);
-            Assert.Single(result.Lenders);
-            Assert.Single(result.Borrowers);
+            Assert.Equal(1, result.Lenders.Count);
+            Assert.Equal(1, result.Borrowers.Count);
         }
-        public void Dispose()
-        {
-            _context.Dispose();
-        }
+        
     }
 }

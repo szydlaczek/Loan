@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LoanApp.Persistence.Migrations
 {
     [DbContext(typeof(LoanAppDbContext))]
-    [Migration("20181225222457_Loan_property")]
-    partial class Loan_property
+    [Migration("20181228054559_Create")]
+    partial class Create
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -57,7 +57,18 @@ namespace LoanApp.Persistence.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Name")
+                        .IsUnique()
+                        .HasFilter("[Name] IS NOT NULL");
+
                     b.ToTable("LoanTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Dinner"
+                        });
                 });
 
             modelBuilder.Entity("LoanApp.Domain.Entities.User", b =>

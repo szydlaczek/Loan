@@ -46,7 +46,8 @@ namespace LoanApp.Persistence.Migrations
                     LoanTypeId = table.Column<int>(nullable: false),
                     LoanValue = table.Column<decimal>(nullable: false),
                     BorrowerId = table.Column<int>(nullable: false),
-                    LenderId = table.Column<int>(nullable: false)
+                    LenderId = table.Column<int>(nullable: false),
+                    IsPaid = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -71,6 +72,11 @@ namespace LoanApp.Persistence.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "LoanTypes",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 1, "Dinner" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Loans_BorrowerId",
                 table: "Loans",
@@ -85,6 +91,20 @@ namespace LoanApp.Persistence.Migrations
                 name: "IX_Loans_LoanTypeId",
                 table: "Loans",
                 column: "LoanTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LoanTypes_Name",
+                table: "LoanTypes",
+                column: "Name",
+                unique: true,
+                filter: "[Name] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_EmailAddress",
+                table: "Users",
+                column: "EmailAddress",
+                unique: true,
+                filter: "[EmailAddress] IS NOT NULL");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

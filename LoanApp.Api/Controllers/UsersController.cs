@@ -30,10 +30,10 @@ namespace LoanApp.Api.Controllers
         }
         [HttpGet]
         [Route("{id}/loans")]
-        public async Task<IActionResult> Get(int id)
+        public async Task<IActionResult> GetUserLoans(int id)
         {
             var response =await  _mediator.Send(new GetUserBorrowsQuery { UserId = id });
-            return Ok(response.Result);
+            return Ok(response);
         }
         [HttpGet]
         [Route("All")]

@@ -35,16 +35,16 @@ namespace LoanApp.UnitTests
                 IsLender = true
             };
 
-            var loanType = new LoanType
-            {
-                Name = "Shopping"
-            };
+            //var loanType = new LoanType
+            //{
+            //    Name = "Shopping"
+            //};
 
             var loan1 = new Loan
             {
                 Borrower = user1,
                 Lender = user2,
-                LoanType = loanType,
+                LoanTypeId = 1,
                 IsPaid = false,
                 LoanValue = 100
             };
@@ -52,11 +52,11 @@ namespace LoanApp.UnitTests
             {
                 Borrower = user1,
                 Lender = user2,
-                LoanType = loanType,
+                LoanTypeId = 1,
                 IsPaid = true,
                 LoanValue = 1000
             };
-            context.LoanTypes.Add(loanType);
+            //context.LoanTypes.Add(loanType);
             context.Users.Add(user1);
             context.Users.Add(user2);
             context.Loans.Add(loan1);
